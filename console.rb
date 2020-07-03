@@ -5,6 +5,11 @@ require_relative('models/Customer')
 require_relative('models/Film')
 require_relative('models/Ticket')
 
+# RESET DB - DELETE ALL ENTRIES
+Customer.delete_all()
+Film.delete_all()
+
+
 # OBJECTS
 customer1 = Customer.new({
     'name' => 'Stephen',
