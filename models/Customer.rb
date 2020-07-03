@@ -37,6 +37,19 @@ class Customer
         result = film_list.map() {|film| Film.new(film)}
     end
 
+    def tickets()
+        sql = "SELECT * FROM tickets WHERE id = $1"
+        values = [@id]
+        ticket_info = SqlRunner.run(sql, values)
+        return ticket_info.map() {|ticket| Ticket.new(ticket)}
+    end
+    
+    def create_ticket(film_id)
+        ticket = Ticket.new({'customer_id' => self.id, 'film_id' => film_id})
+        ticket.save()
+        return ticket
+    end
+
     def self.delete_all()
         sql = "DELETE FROM customers"
         SqlRunner.run(sql)
