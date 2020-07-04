@@ -4,6 +4,7 @@ require('pry-byebug')
 require_relative('models/Customer')
 require_relative('models/Film')
 require_relative('models/Ticket')
+require_relative('models/Screening')
 
 # RESET DB - DELETE ALL ENTRIES
 Ticket.delete_all()
@@ -37,8 +38,18 @@ film1.save()
 film2.save()
 
 
-
-
+film1_screening1 = Screening.new({
+    'time' => '18:00',
+    'tickets_left' => 5,
+    'film_id' => film1.id
+})
+film1_screening2 = Screening.new({
+    'time' => '20:30',
+    'tickets_left' => 10,
+    'film_id' => film1.id
+})
+film1_screening1.save()
+film1_screening2.save()
 
 
 # customer1.buy_ticket(film1.id)
