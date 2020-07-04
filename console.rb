@@ -37,6 +37,13 @@ film1.save()
 film2.save()
 
 
+
+
+
+
+# customer1.buy_ticket(film1.id)
+# customer2.buy_ticket(film1.id)
+
 # ticket1 = Ticket.new({
 #     'customer_id' => customer1.id,
 #     'film_id' => film1.id
