@@ -41,11 +41,13 @@ film2.save()
 
 film1_screening1 = Screening.new({
     'time' => '18:00',
+    'tickets_sold' => 0,
     'tickets_left' => 5,
     'film_id' => film1.id
 })
 film1_screening2 = Screening.new({
     'time' => '20:30',
+    'tickets_sold' => 0,
     'tickets_left' => 10,
     'film_id' => film1.id
 })
