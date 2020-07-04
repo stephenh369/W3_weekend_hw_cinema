@@ -50,6 +50,19 @@ class Customer
         return ticket
     end
 
+    def buy_ticket(film_id)
+        create_ticket(film_id)
+        sql = "SELECT * FROM films WHERE id = $1"
+        values = [film_id]
+        film_info = SqlRunner.run(sql, values).first
+        if self.funds > film_info['price'].to_i
+            self.funds -= film_info['price'].to_i
+            self.update()
+        else
+            return "Insufficient funds."
+        end
+    end
+
     def self.delete_all()
         sql = "DELETE FROM customers"
         SqlRunner.run(sql)
