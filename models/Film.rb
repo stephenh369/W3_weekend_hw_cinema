@@ -37,6 +37,10 @@ class Film
         result = customer_list.map() {|customer| Customer.new(customer)}
     end
 
+    def customer_count()
+        return self.customers.count()
+    end
+
     def self.delete_all()
         sql = "DELETE FROM films"
         SqlRunner.run(sql)
