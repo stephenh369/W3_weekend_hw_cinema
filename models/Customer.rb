@@ -38,12 +38,16 @@ class Customer
     end
 
     def tickets()
-        sql = "SELECT * FROM tickets WHERE id = $1"
+        sql = "SELECT tickets.* FROM tickets WHERE customer_id = $1"
         values = [@id]
         ticket_info = SqlRunner.run(sql, values)
         return ticket_info.map() {|ticket| Ticket.new(ticket)}
     end
     
+    def ticket_count()
+        return self.tickets.count
+    end
+
     def create_ticket(film_id)
         ticket = Ticket.new({'customer_id' => self.id, 'film_id' => film_id})
         ticket.save()
