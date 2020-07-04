@@ -7,6 +7,7 @@ require_relative('models/Ticket')
 require_relative('models/Screening')
 
 # RESET DB - DELETE ALL ENTRIES
+Screening.delete_all()
 Ticket.delete_all()
 Customer.delete_all()
 Film.delete_all()
