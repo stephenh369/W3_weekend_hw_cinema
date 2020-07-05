@@ -39,6 +39,26 @@ class Screening
         return Film.new(film)
     end
 
+    def increase_tickets_sold(amount)
+        self.tickets_sold += amount
+        return self.update()
+    end
+
+    def decrease_tickets_sold(amount)
+        self.tickets_sold -= amount
+        return self.update()
+    end
+    
+    def increase_tickets_left(amount)
+        self.tickets_left += amount
+        return self.update()
+    end
+
+    def decrease_tickets_left(amount)
+        self.tickets_left -= amount
+        return self.update()
+    end
+
     def self.delete_all()
         sql = "DELETE FROM screenings"
         SqlRunner.run(sql)
