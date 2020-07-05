@@ -48,14 +48,14 @@ class Customer
         return self.tickets.count
     end
 
-    def create_ticket(film_id)
-        ticket = Ticket.new({'customer_id' => self.id, 'film_id' => film_id})
+    def create_ticket(film_id, screening_id)
+        ticket = Ticket.new({'customer_id' => self.id, 'film_id' => film_id, 'screening_id' => screening_id})
         ticket.save()
         return ticket
     end
 
-    def buy_ticket(film_id)
-        create_ticket(film_id)
+    def buy_ticket(film_id, screening_id)
+        create_ticket(film_id, screening_id)
         sql = "SELECT * FROM films WHERE id = $1"
         values = [film_id]
         film_info = SqlRunner.run(sql, values).first
